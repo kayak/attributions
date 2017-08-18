@@ -2,7 +2,7 @@
 
 Attributions is a framework used to acknowledge Third-Party Libraries and build tools used to develop and maintain your iOS application. Here's an example:
 
-[TODO: add screenshots]
+![Framed Screenshot](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsListView.png) ![Framed Screenshot](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsListView.png)
 
 ## Compile Attributions
 
@@ -74,4 +74,4 @@ Attributions includes two scripts: one that compiles Attributions from Carthage 
 
 To incorporate Attributions into your project, add the compiled Attribution JSON files to the project. Instantiate an AttributionViewController object `let controller = AttributionViewController()`, and set `controller.attributionStyles()`. Build an array of `AttributionSections`. For example  from the compiled Attribution JSON files. Then call `controller.setAttributions(from: [AttributionSections])`. Lastly, add the AttributionViewController to the desired `UINavigationController`. For more details, please reference the AppDelegate in the Example App provided.
 
-[TODO: add code snippet from Example AppDelegate]
+![Framed Screenshot](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/SampleUsageCode.png)
