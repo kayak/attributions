@@ -6,26 +6,24 @@ Attributions is a framework used to acknowledge Third-Party Libraries and build 
 
 ## Compile Attributions
 
-Attributions includes two scripts: one that compiles Attributions from Carthage dependencies, and the other which compiles Attributions from GitHub Repositories for user specified Third-Party Libraries. Remaining Attributions can be built from commonly used licenses, bundled within the framework, or specified by the user manually.
+Attributions includes two scripts: one that compiles Attributions from Carthage dependencies, and the other which compiles Attributions from GitHub Repositories for user specified Third-Party Libraries. Remaining Attributions can be built from commonly used licenses, bundled within the framework, or specified manually by the user.
 
 * To compile Attributions for dependencies managed by Carthage:
-	* Run `update Carthage` to build the project's Carthage directory, if needed
-	*  Run 	`python cartfile2json.py [directory containing Carthage files] 	[output.json]`
+	* If needed, run `update Carthage` to build the project's Carthage directory
+	* Run `python cartfile2json.py [directory containing Carthage files] 	[output.json]`
 
 * To compile Attributions for Third-Party Libraries with GitHub Repositories:
-
 	* Create an input file containing a list of GitHub Repositories:
      	``` text
       https://github.com/jenkinsci/jenkins
 	    https://github.com/fastlane/fastlane
 	    https://github.com/realm/SwiftLint
     	```
-  	* Then, run `python attributions2json.py [./input file] [output.json]`
-
+  * Then, run `python attributions2json.py [./input file] [output.json]`
 
 ## Example Attribution JSON Files
 
-  * Output file from scripts:
+* Output file from scripts:
 
       ```
       [
@@ -68,10 +66,18 @@ Attributions includes two scripts: one that compiles Attributions from Carthage 
 
 ## Usage
 
-* `AttributionViewController` - contains an `attributionStyle: AttributionStyle` public member variable, and a public `func setAttributions(from sections: [AttributionSections])`.  `setAttributions(from sections:)` compiles all input JSON files, and populates a UITableView with the data.
-* `AttributionStyles` - is a struct containing the following mutable parameters: `textColor: UIColor`, `rowHeight: CGFloat`, and `statusBarStyle: UIStatusBarStyle`. Some or all the style parameters  can be specified when instantiated. If not specified, default styles are used.
-* `AttributionSections` - is a struct used to define the input JSON Attribution file. Each file is treated as its own section. `AttributionSection` has two member variables and is initialized with `AttributionSections(file: URL, description: String)`
+* `AttributionViewController` - is a subclassed UITableViewController that lists all the Attributions. It has two public members:
+  * `attributionStyle` - an `AttributionStyle` struct used to modify styles (described below)
+  * `func setAttributions(from sections: [AttributionSections])` - creates and compiles Attributions from all input JSON files, and populates a UITableView with the data.
+* `AttributionStyles` - is a struct that controls some styling options.
+    * `textColor: UIColor` - `black` by default
+    * `rowHeight: CGFloat` - `44` by default
+    * `statusBarStyle: UIStatusBarStyle`. - `.default` by default
+  Some or all the style parameters  can be specified when instantiated. If a parameter is not specified, the default style is used.
+* `AttributionSections` - is a struct used to define each input JSON Attribution file. Each file is treated as its own section.
+  * `file` -  URL specifying location of Attribution JSON file
+  * `description` - String describing the file (i.e. "Carthage")
 
-To incorporate Attributions into your project, add the compiled Attribution JSON files to the project. Instantiate an AttributionViewController object `let controller = AttributionViewController()`, and set `controller.attributionStyles()`. Build an array of `AttributionSections`. For example  from the compiled Attribution JSON files. Then call `controller.setAttributions(from: [AttributionSections])`. Lastly, add the AttributionViewController to the desired `UINavigationController`. For more details, please reference the AppDelegate in the Example App provided.
+To incorporate Attributions into your project, add the compiled Attribution JSON files to the project. Instantiate an AttributionViewController object `let controller = AttributionViewController()`, and set `controller.attributionStyles()`. Build an array of `AttributionSections` from the compiled Attribution JSON files. Then call `controller.setAttributions(from: [AttributionSections])`. Lastly, add the AttributionViewController to the desired `UINavigationController`. For more details, please reference the AppDelegate in the Example App provided.
 
 ![Framed Screenshot](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/SampleUsageCode.png)
