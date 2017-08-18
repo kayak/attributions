@@ -2,7 +2,7 @@
 
 Attributions is a framework used to acknowledge Third-Party Libraries and build tools used to develop and maintain your iOS application. Here's an example:
 
-![Framed Screenshot](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsListView.png) ![Framed Screenshot](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsListView.png)
+![Framed Screenshot](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsListView.png) ![Framed Screenshot](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsLicenseView.png)
 
 ## Compile Attributions
 
@@ -27,7 +27,7 @@ Attributions includes two scripts: one that compiles Attributions from Carthage 
 
   * Output file from scripts:
 
-      ```json
+      ```
       [
         ...
       	{
