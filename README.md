@@ -79,5 +79,3 @@ Attributions includes two scripts: one that compiles Attributions from Carthage 
   * `description` - String describing the file (i.e. "Carthage")
 
 To incorporate Attributions into your project, add the compiled Attribution JSON files to the project. Instantiate an AttributionViewController object `let controller = AttributionViewController()`, and set `controller.attributionStyles()`. Build an array of `AttributionSections` from the compiled Attribution JSON files. Then call `controller.setAttributions(from: [AttributionSections])`. Lastly, add the AttributionViewController to the desired `UINavigationController`. For more details, please reference Example App provided.
-
-![Framed Screenshot](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/SampleUsageCode.png)
