@@ -2,8 +2,16 @@
 
 Attributions is a framework used to acknowledge Third-Party Libraries and build tools used to develop and maintain your iOS application. Here's an example:
 
-| ![](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsListView.png)  | ![](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsLicenseView.png)  |
-:---:|:---:
+<!--- | ![](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsListView.png)  | ![](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsLicenseView.png)  |
+:---:|:---: --->
+
+
+<table border-collapse="collapse">
+	<tr padding="0">
+    	<th padding="0" border="none"><img src= "https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsListView.png"></th>
+    	<th padding="0" border="none"><img src= "https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsLicenseView.png"></th>
+	</tr>
+</table>
 
 
 
