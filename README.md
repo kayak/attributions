@@ -2,17 +2,8 @@
 
 Attributions is a framework used to acknowledge Third-Party Libraries and build tools used to develop and maintain your iOS application. Here's an example:
 
-<!--- | ![](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsListView.png)  | ![](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsLicenseView.png)  |
-:---:|:---: --->
-
-
-<table border-collapse="collapse">
-	<tr padding="0">
-    	<th padding="0" border="none"><img src= "https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsListView.png"></th>
-    	<th padding="0" border="none"><img src= "https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsLicenseView.png"></th>
-	</tr>
-</table>
-
+| ![](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsListView.png)  | ![](https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsLicenseView.png)  |
+:---:|:---:
 
 
 ## Compile Attributions
@@ -27,9 +18,9 @@ Attributions includes two scripts: one that compiles Attributions from Carthage 
 	* Create an input file containing a list of GitHub Repositories:
         ``` text
         https://github.com/jenkinsci/jenkins
-	    https://github.com/fastlane/fastlane
-	    https://github.com/realm/SwiftLint
-     	```
+	      https://github.com/fastlane/fastlane
+	      https://github.com/realm/SwiftLint
+      	```
   * Then, run `python attributions2json.py [./input file] [output.json]`
 
 ## Example Attribution JSON Files
