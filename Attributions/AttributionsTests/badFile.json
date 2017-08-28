@@ -1,0 +1,8 @@
+[
+ {
+    "name": "BadFile",
+    "license": {
+        "id" :"badfile.txt"
+    }
+ }
+]

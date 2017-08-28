@@ -1,0 +1,39 @@
+[
+    {
+        "name": "Foo",
+         "license": {
+            "id" :  "agpl-3.0"
+         }
+    },
+    {
+        "name": "Apache",
+         "license": {
+            "id": "apache-2.0"
+         }
+    },
+    {
+        "name": "Eclipse",
+        "license": {
+            "id" :"epl-1.0"
+        }
+    },
+    {
+        "name": "Unlicense: KEY",
+        "license": {
+            "id": "unlicense"
+        }
+    },
+    {
+         "name": "UnLicense: Main",
+         "license": {
+            "filename": "unlicenseMain.txt"
+         }
+     },
+     {
+         "name": "UnLicense: Framework",
+         "license": {
+            "bundleID" : "com.kayak.Framework",
+            "filename": "unlicenseFW.txt"
+         }
+     }
+]
