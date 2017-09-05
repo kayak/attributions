@@ -15,13 +15,13 @@ Attributions includes two scripts: one that compiles Attributions from Carthage 
 	* Run `python cartfile2json.py [directory containing Carthage files] 	[output.json]`
 
 * To compile Attributions for Third-Party Libraries with GitHub Repositories:
-	* Create an input file containing a list of GitHub Repositories:
-        ``` text
-				https://github.com/jenkinsci/jenkins
-	      https://github.com/fastlane/fastlane
-	      https://github.com/realm/SwiftLint
-      	```
-  * Then, run `python attributions2json.py [./input file] [output.json]`
+	* Create an input file containing a list of GitHub Repositories
+	    ``` text
+			https://github.com/jenkinsci/jenkins
+	    https://github.com/fastlane/fastlane
+	    https://github.com/realm/SwiftLint
+     	```
+    * Then, run `python attributions2json.py [./input file] [output.json]`
 
 ## Example Attribution JSON Files
 
@@ -85,27 +85,26 @@ To incorporate Attributions into your project, add the compiled Attribution JSON
 * Attributions Implementation Example:
 
 ```swift
-	let attributionController = AttributionController()
-	guard let carthageFile = Bundle.main.url(forResource: "carthageAttributions", withExtension: "json") else {
-		assertionFailure("File not found")
-		return false
-	}
-	guard let customAttributionsFile = Bundle.main.url(forResource: "customAttributions", withExtension: "json") else {
-		assertionFailure("File not found")
-		return false
-	}
-	let sections = [
-		AttributionSection(file: carthageFile, description: "Carthage"),
-		AttributionSection(file: customAttributionsFile, description: "Other")
-	]
+    let attributionController = AttributionController()
+    guard let carthageFile = Bundle.main.url(forResource: "carthageAttributions", withExtension: "json") else {
+        assertionFailure("File not found")
+        return false
+    }
+    guard let customAttributionsFile = Bundle.main.url(forResource: "customAttributions", withExtension: "json") else {
+        assertionFailure("File not found")
+        return false
+    }
+    let sections = [
+        AttributionSection(file: carthageFile, description: "Carthage"),
+        AttributionSection(file: customAttributionsFile, description: "Other")
+    ]
+    do {
+        try attributionController.setAttributions(from: sections)
+    } catch {
+        assertionFailure(error.localizedDescription)
+        return false
+    }
 
-	do {
-		try attributionController.setAttributions(from: sections)
-	} catch {
-		assertionFailure(error.localizedDescription)
-		return false
-	}
-
-	let navController = UINavigationController()
-	navController.viewControllers = [attributionController as UIViewController]
+    let navController = UINavigationController()
+    navController.viewControllers = [attributionController as UIViewController]
 ```
