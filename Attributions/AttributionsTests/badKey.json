@@ -1,0 +1,8 @@
+ [
+  {
+    "name": "BadKey",
+    "license": {
+        "id" :"epl-10"
+    }
+  }
+]
