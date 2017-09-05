@@ -17,7 +17,7 @@ Attributions includes two scripts: one that compiles Attributions from Carthage 
 * To compile Attributions for Third-Party Libraries with GitHub Repositories:
 	* Create an input file containing a list of GitHub Repositories:
         ``` text
-        https://github.com/jenkinsci/jenkins
+				https://github.com/jenkinsci/jenkins
 	      https://github.com/fastlane/fastlane
 	      https://github.com/realm/SwiftLint
       	```
