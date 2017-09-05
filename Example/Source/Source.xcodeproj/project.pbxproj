@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		25209AEC1F3DA0C20072C838 /* Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2594A4E61F445F7500D8C5F7 /* AttributionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributionController.swift; sourceTree = "<group>"; };
-		259C8ED81F39A09900DFDA05 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		259C8ED81F39A09900DFDA05 /* Source.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Source.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		259C8EDB1F39A09900DFDA05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		259C8EE21F39A09900DFDA05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		259C8EE51F39A09900DFDA05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 			children = (
 				25209AEC1F3DA0C20072C838 /* Framework.framework */,
 				25ABE3621F3CAB5600C1E497 /* Attributions.framework */,
-				259C8EDA1F39A09900DFDA05 /* Example */,
+				259C8EDA1F39A09900DFDA05 /* Source */,
 				259C8ED91F39A09900DFDA05 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,12 +75,12 @@
 		259C8ED91F39A09900DFDA05 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				259C8ED81F39A09900DFDA05 /* Example.app */,
+				259C8ED81F39A09900DFDA05 /* Source.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		259C8EDA1F39A09900DFDA05 /* Example */ = {
+		259C8EDA1F39A09900DFDA05 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				259C8EDB1F39A09900DFDA05 /* AppDelegate.swift */,
@@ -92,15 +92,15 @@
 				259C8EE71F39A09900DFDA05 /* Info.plist */,
 				2594A4E61F445F7500D8C5F7 /* AttributionController.swift */,
 			);
-			path = Example;
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		259C8ED71F39A09900DFDA05 /* Example */ = {
+		259C8ED71F39A09900DFDA05 /* Source */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 259C8F001F39A09900DFDA05 /* Build configuration list for PBXNativeTarget "Example" */;
+			buildConfigurationList = 259C8F001F39A09900DFDA05 /* Build configuration list for PBXNativeTarget "Source" */;
 			buildPhases = (
 				259C8ED41F39A09900DFDA05 /* Sources */,
 				259C8ED51F39A09900DFDA05 /* Frameworks */,
@@ -111,9 +111,9 @@
 			);
 			dependencies = (
 			);
-			name = Example;
+			name = Source;
 			productName = Example;
-			productReference = 259C8ED81F39A09900DFDA05 /* Example.app */;
+			productReference = 259C8ED81F39A09900DFDA05 /* Source.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -132,7 +132,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 259C8ED31F39A09900DFDA05 /* Build configuration list for PBXProject "Example" */;
+			buildConfigurationList = 259C8ED31F39A09900DFDA05 /* Build configuration list for PBXProject "Source" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -145,7 +145,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				259C8ED71F39A09900DFDA05 /* Example */,
+				259C8ED71F39A09900DFDA05 /* Source */,
 			);
 		};
 /* End PBXProject section */
@@ -288,9 +288,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_FILE = Source/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kayak.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kayak.Source;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -300,9 +300,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_FILE = Source/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kayak.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kayak.Source;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -311,7 +311,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		259C8ED31F39A09900DFDA05 /* Build configuration list for PBXProject "Example" */ = {
+		259C8ED31F39A09900DFDA05 /* Build configuration list for PBXProject "Source" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				259C8EFE1F39A09900DFDA05 /* Debug */,
@@ -320,7 +320,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		259C8F001F39A09900DFDA05 /* Build configuration list for PBXNativeTarget "Example" */ = {
+		259C8F001F39A09900DFDA05 /* Build configuration list for PBXNativeTarget "Source" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				259C8F011F39A09900DFDA05 /* Debug */,
