@@ -85,30 +85,27 @@ To incorporate Attributions into your project, add the compiled Attribution JSON
 * Attributions Implementation Example:
 
 ```swift
-  let attributionController = AttributionController()
-  guard let carthageFile = Bundle.main.url(
-      forResource: "carthageAttributions",withExtension: "json")
-  else {
-      assertionFailure("File not found")
-      return false
-  }
-  guard let customAttributionsFile = Bundle.main.url(
-          forResource: "customAttributions", withExtension: "json")
-  else {
-      assertionFailure("File not found")
-      return false
-  }
-  let sections = [
-      AttributionSection(file: carthageFile, description: "Carthage"),
-      AttributionSection(file: customAttributionsFile, description: "Other")
-  ]
-  do {
-      try attributionController.setAttributions(from: sections)
-  } catch {
-      assertionFailure(error.localizedDescription)
-      return false
-  }
+	let attributionController = AttributionController()
+	guard let carthageFile = Bundle.main.url(forResource: "carthageAttributions", withExtension: "json") else {
+			assertionFailure("File not found")
+			return false
+	}
+	guard let customAttributionsFile = Bundle.main.url(forResource: "customAttributions", withExtension: "json") else {
+			assertionFailure("File not found")
+			return false
+	}
+	let sections = [
+			AttributionSection(file: carthageFile, description: "Carthage"),
+			AttributionSection(file: customAttributionsFile, description: "Other")
+	]
 
-  let navController = UINavigationController()
-  navController.viewControllers = [attributionController as UIViewController]
+	do {
+			try attributionController.setAttributions(from: sections)
+	} catch {
+			assertionFailure(error.localizedDescription)
+			return false
+	}
+
+	let navController = UINavigationController()
+	navController.viewControllers = [attributionController as UIViewController]
 ```
