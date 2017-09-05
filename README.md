@@ -2,7 +2,7 @@
 
 Attributions is a framework used to acknowledge Third-Party Libraries and build tools used to develop and maintain your iOS application. Here's an example:
 
-| <img src="https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsListView.png" style="width: 50%; height: 50%"> | <img src="https://github.com/kayak/attributions/blob/SourceCode/Screenshots/AttributionsLicenseView.png" style="width: 50%; height: 50%">  |
+| <img src="https://github.com/kayak/attributions/blob/master/Screenshots/AttributionsListView.png" style="width: 50%; height: 50%"> | <img src="https://github.com/kayak/attributions/blob/master/Screenshots/AttributionsLicenseView.png" style="width: 50%; height: 50%">  |
 :---:|:---:
 
 
@@ -11,7 +11,7 @@ Attributions is a framework used to acknowledge Third-Party Libraries and build 
 Attributions includes two scripts: one that compiles Attributions from Carthage dependencies, and the other which compiles Attributions from GitHub Repositories (for user specified Third-Party Libraries not managed by Carthage). Remaining Attributions can be built from commonly used licenses, bundled within the framework, or specified manually by the user.
 
 * To compile Attributions for dependencies managed by Carthage:
-	* If needed, run `update Carthage` to build the project's Carthage directory
+	* If needed, run `carthage update` to build the project's Carthage directory
 	* Run `python cartfile2json.py [directory containing Carthage files] 	[output.json]`
 
 * To compile Attributions for Third-Party Libraries with GitHub Repositories:
@@ -30,11 +30,11 @@ Attributions includes two scripts: one that compiles Attributions from Carthage 
      ```
       [
         ...
-      	{
+        {
             "name": "[Attribution from Carthage/GitHub]",
             "license": {
                 "text": "This is a license... "
-        	}
+            }
         },
         ...
       ]
@@ -53,14 +53,14 @@ Attributions includes two scripts: one that compiles Attributions from Carthage 
       {
            "name": "[Attribution from license in main bundle]",
            "license": {
-              "filename": "unlicenseMain.txt"
+               "filename": "unlicenseMain.txt"
            }
        },
        {
            "name": "[Attribution from license in another framework]",
            "license": {
-              "bundleID" : "com.kayak.Framework",
-              "filename": "unlicenseFW.txt"
+               "bundleID" : "com.kayak.Framework",
+               "filename": "unlicenseFW.txt"
            }
        }
      ]
@@ -80,7 +80,7 @@ Attributions includes two scripts: one that compiles Attributions from Carthage 
   * `file` -  URL specifying location of Attribution JSON file
   * `description` - String describing the file (i.e. "Carthage")
 
-To incorporate Attributions into your project, add the compiled Attribution JSON files to the project. Instantiate an AttributionViewController object, and set the `attributionStyles`. Build an array of `AttributionSections` from the compiled Attributions JSON files. Then call `controller.setAttributions(from: [AttributionSections])`. Lastly, add the AttributionViewController to the desired `UINavigationController`. For more details, please reference Example App provided and the code snippet below.
+To incorporate Attributions into your project, add the compiled Attribution JSON files to the project. Instantiate an AttributionViewController object, and set the `attributionStyles`. Build an array of `AttributionSections` from the compiled Attributions JSON files. Then call `controller.setAttributions(from: [AttributionSections])`. Lastly, add the AttributionViewController to the desired `UINavigationController`. For more details, please reference the Example App provided and the code snippet below.
 
 * Attributions Implementation Example:
 
