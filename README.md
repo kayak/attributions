@@ -80,4 +80,35 @@ Attributions includes two scripts: one that compiles Attributions from Carthage 
   * `file` -  URL specifying location of Attribution JSON file
   * `description` - String describing the file (i.e. "Carthage")
 
-To incorporate Attributions into your project, add the compiled Attribution JSON files to the project. Instantiate an AttributionViewController object, and set the `attributionStyles`. Build an array of `AttributionSections` from the compiled Attributions JSON files. Then call `controller.setAttributions(from: [AttributionSections])`. Lastly, add the AttributionViewController to the desired `UINavigationController`. For more details, please reference Example App provided.
+To incorporate Attributions into your project, add the compiled Attribution JSON files to the project. Instantiate an AttributionViewController object, and set the `attributionStyles`. Build an array of `AttributionSections` from the compiled Attributions JSON files. Then call `controller.setAttributions(from: [AttributionSections])`. Lastly, add the AttributionViewController to the desired `UINavigationController`. For more details, please reference Example App provided and the code snippet below.
+
+* Attributions Implementation Example:
+
+```swift
+  let attributionController = AttributionController()
+  guard let carthageFile = Bundle.main.url(
+      forResource: "carthageAttributions",withExtension: "json")
+  else {
+      assertionFailure("File not found")
+      return false
+  }
+  guard let customAttributionsFile = Bundle.main.url(
+          forResource: "customAttributions", withExtension: "json")
+  else {
+      assertionFailure("File not found")
+      return false
+  }
+  let sections = [
+      AttributionSection(file: carthageFile, description: "Carthage"),
+      AttributionSection(file: customAttributionsFile, description: "Other")
+  ]
+  do {
+      try attributionController.setAttributions(from: sections)
+  } catch {
+      assertionFailure(error.localizedDescription)
+      return false
+  }
+
+  let navController = UINavigationController()
+  navController.viewControllers = [attributionController as UIViewController]
+```

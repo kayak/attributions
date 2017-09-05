@@ -14,8 +14,8 @@ class Attribution():
         self.license = {'text' : license}
 
 
-"""converts Attribution List to json and prints to specified output file"""
 def exportJSON(output, *attributions):
+    """converts Attribution List to json and prints to specified output file"""
     jsonResult = json.dumps([a.__dict__ for a in attributions], sort_keys=False, indent=4)
     try:
         with open(output, 'w') as file:
@@ -25,8 +25,8 @@ def exportJSON(output, *attributions):
         print 'I/O Error: ({0}) : {1}'.format(e.errno, e.strerror)
 
 
-"""returns all attribution names in Cartfile.resolved"""
 def getNames(cartResolved):
+    """returns all attribution names in Cartfile.resolved"""
     names = []
     try:
         with open(cartResolved) as f:
@@ -54,16 +54,16 @@ def validateFile(file):
 
 
 def buildCarthageAttributions(directory):
-"""builds attributions list from all names contained in both Cartfile.resolved file and Carthage/Checkouts directory"""
+    """builds attributions list from all names contained in both Cartfile.resolved file and Carthage/Checkouts directory"""
     cartDirectory = os.path.join(directory, CARTHAGE)
     validateDirectory(cartDirectory)
     cartResolved = os.path.join(directory, CART_RESOLVED)
     validateFile(cartResolved)
 
-    """return all names listed in both Cartfile.resolved, and Carthage/Checkouts"""
+    # return all names listed in both Cartfile.resolved, and Carthage/Checkouts
     frameworks = [n for n in getNames(cartResolved) if n in os.listdir(cartDirectory)]
 
-    """find, open and extract data in LICENSE file from Carthage/Checkouts/[framework]"""
+    # find, open and extract data in LICENSE file from Carthage/Checkouts/[framework]
     attributions = []
     for framework in frameworks:
         frameworkDirectory = os.path.join(cartDirectory, framework)
