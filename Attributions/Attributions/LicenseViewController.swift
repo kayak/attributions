@@ -8,6 +8,7 @@ final class LicenseViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textView.isScrollEnabled = false
         textView.text = try! attribution?.license.getText()
         textView.font = .systemFont(ofSize: 15)
         textView.textColor = attributionStyle.textColor
@@ -20,13 +21,14 @@ final class LicenseViewController: UIViewController  {
             textView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
         ])
         textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.isScrollEnabled = true
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = attribution?.name
     }
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return attributionStyle.statusBarStyle
     }
