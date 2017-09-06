@@ -182,7 +182,6 @@
 				25A57CE71F2B2B3D00CB85C1 /* Frameworks */,
 				25A57CE81F2B2B3D00CB85C1 /* Headers */,
 				25A57CE91F2B2B3D00CB85C1 /* Resources */,
-				25DEAC831F347C2B00A5448A /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -280,23 +279,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		25DEAC831F347C2B00A5448A /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /usr/local/bin/python2.7;
-			shellScript = "#! usr/bin/python2.7\nimport os\n\nprint os.getcwd()";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		25A57CE61F2B2B3D00CB85C1 /* Sources */ = {
