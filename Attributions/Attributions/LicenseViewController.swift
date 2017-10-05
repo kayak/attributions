@@ -8,6 +8,7 @@ final class LicenseViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textView.isEditable = false
         textView.isScrollEnabled = false
         textView.text = try! attribution?.license.getText()
         textView.font = .systemFont(ofSize: 15)
