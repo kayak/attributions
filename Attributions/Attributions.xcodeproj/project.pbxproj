@@ -18,7 +18,7 @@
 		25A57D0C1F2B2B5C00CB85C1 /* AttributionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A57D071F2B2B5C00CB85C1 /* AttributionViewController.swift */; };
 		25A57D0E1F2B2B5C00CB85C1 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A57D091F2B2B5C00CB85C1 /* LicenseViewController.swift */; };
 		25A7EA6B1F3B2C6000643E7A /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A7EA6A1F3B2C6000643E7A /* BundleExtension.swift */; };
-		25ABE3581F3CA81700C1E497 /* AttributionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ABE3561F3CA81700C1E497 /* AttributionsTests.swift */; };
+		25ABE3581F3CA81700C1E497 /* AttributionReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ABE3561F3CA81700C1E497 /* AttributionReaderTests.swift */; };
 		25ABE3591F3CA81700C1E497 /* badKey.json in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE3571F3CA81700C1E497 /* badKey.json */; };
 		25ABE35E1F3CA97800C1E497 /* badFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE35A1F3CA97800C1E497 /* badFile.json */; };
 		25ABE35F1F3CA97800C1E497 /* goodJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE35B1F3CA97800C1E497 /* goodJSON.json */; };
@@ -32,6 +32,8 @@
 		25ABE37A1F3D9A4300C1E497 /* lgpl-3.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE3711F3D9A4300C1E497 /* lgpl-3.0.txt */; };
 		25ABE37B1F3D9A4300C1E497 /* mpl-2.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE3721F3D9A4300C1E497 /* mpl-2.0.txt */; };
 		25ABE37C1F3D9A4300C1E497 /* unlicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE3731F3D9A4300C1E497 /* unlicense.txt */; };
+		4E3A503B1F8648420049249F /* LicenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A503A1F8648420049249F /* LicenseTests.swift */; };
+		4E3A503D1F8648FA0049249F /* AttributionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A503C1F8648FA0049249F /* AttributionTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +60,7 @@
 		25A57D071F2B2B5C00CB85C1 /* AttributionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributionViewController.swift; sourceTree = "<group>"; };
 		25A57D091F2B2B5C00CB85C1 /* LicenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		25A7EA6A1F3B2C6000643E7A /* BundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
-		25ABE3561F3CA81700C1E497 /* AttributionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributionsTests.swift; sourceTree = "<group>"; };
+		25ABE3561F3CA81700C1E497 /* AttributionReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributionReaderTests.swift; sourceTree = "<group>"; };
 		25ABE3571F3CA81700C1E497 /* badKey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badKey.json; sourceTree = "<group>"; };
 		25ABE35A1F3CA97800C1E497 /* badFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badFile.json; sourceTree = "<group>"; };
 		25ABE35B1F3CA97800C1E497 /* goodJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = goodJSON.json; sourceTree = "<group>"; };
@@ -73,6 +75,8 @@
 		25ABE3711F3D9A4300C1E497 /* lgpl-3.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "lgpl-3.0.txt"; sourceTree = "<group>"; };
 		25ABE3721F3D9A4300C1E497 /* mpl-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mpl-2.0.txt"; sourceTree = "<group>"; };
 		25ABE3731F3D9A4300C1E497 /* unlicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unlicense.txt; sourceTree = "<group>"; };
+		4E3A503A1F8648420049249F /* LicenseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseTests.swift; sourceTree = "<group>"; };
+		4E3A503C1F8648FA0049249F /* AttributionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,16 +119,7 @@
 		25A57CED1F2B2B3D00CB85C1 /* Attributions */ = {
 			isa = PBXGroup;
 			children = (
-				25A57D051F2B2B5C00CB85C1 /* Attribution.swift */,
-				25209B751F41EFFC0072C838 /* AttributionSection.swift */,
-				25209B761F41EFFC0072C838 /* AttributionStyle.swift */,
-				25A7EA6A1F3B2C6000643E7A /* BundleExtension.swift */,
-				25A57D061F2B2B5C00CB85C1 /* AttributionReader.swift */,
-				25456C4C1F31B23100414917 /* NSErrorExtension.swift */,
-				25A57D071F2B2B5C00CB85C1 /* AttributionViewController.swift */,
-				25A57D091F2B2B5C00CB85C1 /* LicenseViewController.swift */,
-				259C8F161F39A59C00DFDA05 /* License.swift */,
-				25A57CEE1F2B2B3D00CB85C1 /* Attributions.h */,
+				4EFC43171F82C56300D5168B /* Sources */,
 				25ABE36A1F3D98A100C1E497 /* Licenses */,
 				25A57CEF1F2B2B3D00CB85C1 /* Info.plist */,
 			);
@@ -134,12 +129,14 @@
 		25A57CF81F2B2B3D00CB85C1 /* AttributionsTests */ = {
 			isa = PBXGroup;
 			children = (
-				25ABE3561F3CA81700C1E497 /* AttributionsTests.swift */,
-				25ABE3651F3CB56100C1E497 /* Info.plist */,
+				25ABE3561F3CA81700C1E497 /* AttributionReaderTests.swift */,
+				4E3A503C1F8648FA0049249F /* AttributionTests.swift */,
 				25ABE35A1F3CA97800C1E497 /* badFile.json */,
-				25ABE35B1F3CA97800C1E497 /* goodJSON.json */,
-				25ABE35D1F3CA97800C1E497 /* myLicense.txt */,
 				25ABE3571F3CA81700C1E497 /* badKey.json */,
+				25ABE35B1F3CA97800C1E497 /* goodJSON.json */,
+				25ABE3651F3CB56100C1E497 /* Info.plist */,
+				4E3A503A1F8648420049249F /* LicenseTests.swift */,
+				25ABE35D1F3CA97800C1E497 /* myLicense.txt */,
 			);
 			path = AttributionsTests;
 			sourceTree = "<group>";
@@ -158,6 +155,23 @@
 				25ABE3731F3D9A4300C1E497 /* unlicense.txt */,
 			);
 			path = Licenses;
+			sourceTree = "<group>";
+		};
+		4EFC43171F82C56300D5168B /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				25A57D051F2B2B5C00CB85C1 /* Attribution.swift */,
+				25A57D061F2B2B5C00CB85C1 /* AttributionReader.swift */,
+				25A57CEE1F2B2B3D00CB85C1 /* Attributions.h */,
+				25209B751F41EFFC0072C838 /* AttributionSection.swift */,
+				25209B761F41EFFC0072C838 /* AttributionStyle.swift */,
+				25A57D071F2B2B5C00CB85C1 /* AttributionViewController.swift */,
+				25A7EA6A1F3B2C6000643E7A /* BundleExtension.swift */,
+				259C8F161F39A59C00DFDA05 /* License.swift */,
+				25A57D091F2B2B5C00CB85C1 /* LicenseViewController.swift */,
+				25456C4C1F31B23100414917 /* NSErrorExtension.swift */,
+			);
+			name = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,7 +315,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25ABE3581F3CA81700C1E497 /* AttributionsTests.swift in Sources */,
+				25ABE3581F3CA81700C1E497 /* AttributionReaderTests.swift in Sources */,
+				4E3A503B1F8648420049249F /* LicenseTests.swift in Sources */,
+				4E3A503D1F8648FA0049249F /* AttributionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
