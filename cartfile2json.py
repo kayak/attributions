@@ -1,22 +1,33 @@
-#!usr/bin/python2
+#!/usr/bin/env python2
 
 import json
 import os
+import re
 import sys
 
 CARTHAGE = 'Carthage/Checkouts'
-CART_RESOLVED = 'Cartfile.resolved'
+CARTFILE = 'Cartfile'
 
 
 class Attribution():
-    def __init__(self, name, license):
+    def __init__(self, name, displayedForMainBundleIDs, license):
         self.name = name
+        self.displayedForMainBundleIDs = displayedForMainBundleIDs
         self.license = {'text' : license}
+
+
+class CartfileFramework():
+    def __init__(self, originalLine, name, displayName, bundle):
+        self.originalLine = originalLine
+        self.name = name
+        self.displayName = displayName
+        self.bundle = bundle
 
 
 def exportJSON(output, *attributions):
     """converts Attribution List to json and prints to specified output file"""
-    jsonResult = json.dumps([a.__dict__ for a in attributions], sort_keys=False, indent=4)
+    sortedAttributions = sorted(attributions, key=lambda a: a.name)
+    jsonResult = json.dumps([a.__dict__ for a in sortedAttributions], sort_keys=False, indent=4)
     try:
         with open(output, 'w') as file:
             file.write(jsonResult)
@@ -25,20 +36,38 @@ def exportJSON(output, *attributions):
         print 'I/O Error: ({0}) : {1}'.format(e.errno, e.strerror)
 
 
-def getNames(cartResolved):
-    """returns all attribution names in Cartfile.resolved"""
-    names = []
+def parseCartfileFrameworks(cartfile):
+    """returns all framework names in Cartfile"""
+    frameworks = []
+    macro_buffer = {}
     try:
-        with open(cartResolved) as f:
+        with open(cartfile) as f:
             for line in f:
-                attributes = line.split()
-                repo = attributes[1].strip('"')
-                name = repo.split('/')[1]
-                names.append(name)
+                line = line.strip()
+                if not line:
+                    continue
+                if line.startswith('# Attributions['):
+                    keyValueSearch = re.search('^# Attributions\[([a-zA-Z0-9_]+)\]=(.*)$', line)
+                    if keyValueSearch:
+                        macro_buffer.update({keyValueSearch.group(1): keyValueSearch.group(2)})
+                    else:
+                        print "Failed to parse Attributions macro '{}'".format(line)
+                elif line.startswith('#'):
+                    continue
+                else:
+                    components = line.split()
+                    repo = components[1].strip('"')
+                    frameworkName = repo.split('/')[1]
+                    displayName = macro_buffer.get('display_name', frameworkName)
+                    displayedForMainBundleIDsString = macro_buffer.get('displayed_for_main_bundle_ids', None)
+                    displayedForMainBundleIDs = displayedForMainBundleIDsString.split(',') if displayedForMainBundleIDsString else []
+                    macro_buffer = {}
+                    framework = CartfileFramework(line, frameworkName, displayName, displayedForMainBundleIDs)
+                    frameworks.append(framework)
     except IOError as e:
-        print 'Could not open {}'.format(cartResolved)
+        print 'Could not open {}'.format(cartfile)
         sys.exit(1)
-    return names
+    return frameworks
 
 
 def validateDirectory(directory):
@@ -54,27 +83,27 @@ def validateFile(file):
 
 
 def buildCarthageAttributions(directory):
-    """builds attributions list from all names contained in both Cartfile.resolved file and Carthage/Checkouts directory"""
+    """builds attributions list from all names contained in both Cartfile file and Carthage/Checkouts directory"""
     cartDirectory = os.path.join(directory, CARTHAGE)
     validateDirectory(cartDirectory)
-    cartResolved = os.path.join(directory, CART_RESOLVED)
-    validateFile(cartResolved)
+    cartfile = os.path.join(directory, CARTFILE)
+    validateFile(cartfile)
 
-    # return all names listed in both Cartfile.resolved, and Carthage/Checkouts
-    frameworks = [n for n in getNames(cartResolved) if n in os.listdir(cartDirectory)]
+    # return all names listed in both Cartfile, and Carthage/Checkouts
+    cartfileFrameworks = [f for f in parseCartfileFrameworks(cartfile) if f.name in os.listdir(cartDirectory)]
 
     # find, open and extract data in LICENSE file from Carthage/Checkouts/[framework]
     attributions = []
-    for framework in frameworks:
-        frameworkDirectory = os.path.join(cartDirectory, framework)
+    for framework in cartfileFrameworks:
+        frameworkDirectory = os.path.join(cartDirectory, framework.name)
         validateDirectory(frameworkDirectory)
-        filename = [f for f in os.listdir(frameworkDirectory) if f.startswith('LICENSE')]
-        fname = filename[0]
+        filenames = [f for f in os.listdir(frameworkDirectory) if 'LICENSE' in f]
+        filename = filenames[0]
         try:
-            text = open(os.path.join(frameworkDirectory, fname)).read()
+            licenseText = open(os.path.join(frameworkDirectory, filename)).read()
         except IOError as e:
-            print 'I/O Error: ({0}) : {1}'.format(fname, e.strerror)
-        attributions.append(Attribution(framework, text))
+            print 'I/O Error: ({0}) : {1}'.format(filename, e.strerror)
+        attributions.append(Attribution(framework.displayName, framework.bundle, licenseText))
     return attributions
 
 

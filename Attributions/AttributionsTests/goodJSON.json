@@ -7,12 +7,14 @@
     },
     {
         "name": "Eclipse",
+        "displayedForMainBundleIDs": [],
         "license": {
             "id" :"epl-1.0"
         }
     },
     {
         "name": "Another Framework",
+        "displayedForMainBundleIDs": ["com.kayak.AttributionsTests"],
         "license": {
             "bundleID" : "com.kayak.AttributionsTests",
             "filename": "myLicense.txt"

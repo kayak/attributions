@@ -11,7 +11,7 @@ Attributions is a framework used to acknowledge Third-Party Libraries and build 
 Attributions includes two scripts: one that compiles Attributions from Carthage dependencies, and the other which compiles Attributions from GitHub Repositories (for user specified Third-Party Libraries not managed by Carthage). Remaining Attributions can be built from commonly used licenses, bundled within the framework, or specified manually by the user.
 
 * To compile Attributions for dependencies managed by Carthage:
-	* If needed, run `carthage update` to build the project's Carthage directory
+	* Run `carthage checkout --no-use-binaries` to download framework sources into your project's `Carthage/Checkouts` directory
 	* Run `python cartfile2json.py [directory containing Carthage files] 	[output.json]`
 
 * To compile Attributions for Third-Party Libraries with GitHub Repositories:
@@ -65,6 +65,40 @@ Attributions includes two scripts: one that compiles Attributions from Carthage 
        }
      ]
      ```
+
+## Customize Carthage Attributions
+
+It's possible to further customize displayed Carthage attributions by modifying `Cartfile` with Attributions macros, which are comments with a simple syntax:
+``` text
+# Attributions[macro_key]=macro_value
+github "kayak/attributions"
+```
+Attributions macros apply to the next Carthage framework declaration. You can define multiple macros for a framework by separating each macro into separate line:
+``` text
+# Attributions[key1]=value1
+# Attributions[key2]=value2
+github "kayak/attributions"
+```
+
+### Change attribution display name
+
+Since framework name is inferred from second path of Carthage identifier (after slash), some framework attributions may not display with a self descriptive name. To provide a custom name for an attribution, insert `display_name` macro into `Cartfile`:
+
+``` text
+# Attributions[display_name]=KAYAK Attributions
+github "kayak/attributions"
+```
+
+### Limit attribution to specific bundle identifier
+
+If you build multiple apps in one workspace, but there are frameworks, which are only embedded into a subset of those apps, you can limit displayed attributions to only that subset. Collect main app bundle identifiers and insert them with a `displayed_for_main_bundle_ids` macro into `Cartfile`:
+
+``` text
+# Attributions[displayed_for_main_bundle_ids]=com.company.myapp1,com.company.mayapp2
+github "kayak/attributions"
+```
+
+This macro is optional and not providing it, displays the framework attribution in all your apps.
 
 ## Usage
 

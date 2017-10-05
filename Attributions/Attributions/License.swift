@@ -37,10 +37,7 @@ enum License {
     private func readText(resource: String, bundle: Bundle) throws -> String {
         let filename = (resource as NSString).deletingPathExtension
         let fileExtension = (resource as NSString).pathExtension
-        let path: URL
-        if let filePath = bundle.url(forResource: filename, withExtension: fileExtension) {
-            path = filePath
-        } else {
+        guard let path = bundle.url(forResource: filename, withExtension: fileExtension) else {
             throw NSError.makeError(description: "Could not find file: \(resource)")
         }
         let data = try Data(contentsOf: path)
