@@ -70,9 +70,9 @@ def parseCartfileFrameworks(cartfile):
     return frameworks
 
 
-def validateDirectory(directory):
+def validateDirectory(directory, messageFormat):
     if not os.path.isdir(directory):
-        print 'Invalid Directory: {}'.format(directory)
+        print messageFormat.format(directory)
         sys.exit(1)
 
 
@@ -85,18 +85,18 @@ def validateFile(file):
 def buildCarthageAttributions(directory):
     """builds attributions list from all names contained in both Cartfile file and Carthage/Checkouts directory"""
     cartDirectory = os.path.join(directory, CARTHAGE)
-    validateDirectory(cartDirectory)
+    validateDirectory(cartDirectory, 'Path {} is not a directory.')
     cartfile = os.path.join(directory, CARTFILE)
     validateFile(cartfile)
 
-    # return all names listed in both Cartfile, and Carthage/Checkouts
-    cartfileFrameworks = [f for f in parseCartfileFrameworks(cartfile) if f.name in os.listdir(cartDirectory)]
+    # all frameworks listed in Cartfile
+    cartfileFrameworks = parseCartfileFrameworks(cartfile)
 
     # find, open and extract data in LICENSE file from Carthage/Checkouts/[framework]
     attributions = []
     for framework in cartfileFrameworks:
         frameworkDirectory = os.path.join(cartDirectory, framework.name)
-        validateDirectory(frameworkDirectory)
+        validateDirectory(frameworkDirectory, 'Path {} is not a directory.\nMake sure to run `carthage checkout --no-use-binaries` before running this script.')
         filenames = [f for f in os.listdir(frameworkDirectory) if 'LICENSE' in f]
         filename = filenames[0]
         try:
@@ -112,7 +112,6 @@ if __name__ == '__main__':
         print 'Missing script argument: ./cartfile2json [Carthage directory path] [outputFile.json]'
         sys.exit(1)
     directory = sys.argv[1]
-    validateDirectory(directory)
     outputFile = sys.argv[2]
     if outputFile.endswith('.json'):
         d = buildCarthageAttributions(directory)
