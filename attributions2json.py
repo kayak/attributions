@@ -5,6 +5,7 @@ import os
 import shlex
 import subprocess
 import sys
+import urllib2
 
 
 class Attribution():
@@ -14,8 +15,7 @@ class Attribution():
         self.license = {'text' : license}
 
 
-def exportJSON(output, *attributions):
-    """converts Attribution List to json and prints to specified output file"""
+def export_json(output, *attributions):
     jsonResult = json.dumps([a.__dict__ for a in attributions], sort_keys=False, indent=4)
     try:
         with open(output, 'w') as file:
@@ -25,39 +25,48 @@ def exportJSON(output, *attributions):
         print 'I/O Error: ({0}) : {1}'.format(e.errno, e.strerror)
 
 
-def getGitRepos(input):
+def get_repos(input):
     with open(input) as file:
-        gitURLs = [line.strip() + '/trunk' for line in file]
-    return gitURLs
+        repos = [line.strip() for line in file]
+    return repos
 
 
-def getNameFrom(gitRepo):
-    return gitRepo.split('github.com/')[1].split('/')[1]
+def get_name(repo):
+    return repo.split('github.com/')[1].split('/')[1]
 
 
-def getLicenseFileNameFrom(gitRepo):
-    command = '{} {}'.format('svn ls', gitRepo)
-    output = spawnProcessWith(command)
-    repoContents = ''.join(output).split()
-    filename = [f for f in repoContents if f.startswith('LICENSE')]
-    if filename:
-        return filename[0]
+def get_owner_name(repo):
+    return '/'.join(repo.split('github.com/')[1].split('/')[0:2])
 
 
-def getLicenseTextFrom(gitRepo):
-    filename = getLicenseFileNameFrom(gitRepo)
-    if filename:
-        command = '{} {}/{}'.format('svn cat', gitRepo, filename)
-        return spawnProcessWith(command)
+def get_content_headers():
+    if os.environ.has_key('GITHUB_ACCESS_TOKEN'):
+        return { 'Authorization': 'token %s' % os.environ['GITHUB_ACCESS_TOKEN'] }
 
 
-def spawnProcessWith(command):
-    p = subprocess.Popen(shlex.split(command), stdout=subprocess.PIPE, shell=False)
-    (output, err) = p.communicate()
-    return output
+def send_content_request(repo, path):
+    request = urllib2.Request('https://api.github.com/repos/%s/contents/%s' % (get_owner_name(repo), path.lstrip('/')),
+        headers = get_content_headers())
+    return json.loads(urllib2.urlopen(request).read())
 
 
-def validateFile(file, type):
+def find_license_path(repo):
+    data = send_content_request(repo, '/')
+    item = next((item for item in data if item['path'].startswith('LICENSE')), None)
+    if not item:
+        item = next((item for item in data if item['path'].startswith('COPYING')), None)
+    if item:
+        return item['path']
+
+
+def get_license_text(repo):
+    path = find_license_path(repo)
+    if path:
+        data = send_content_request(repo, path)
+        return data['content'].decode(data['encoding'])
+
+
+def validate_file(file, type):
     if type is 'input':
         if not os.path.isfile(file):
             print 'File not found: {}'.format(file)
@@ -70,20 +79,24 @@ def validateFile(file, type):
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
-        print 'Missing script argument: ./attributions2json [./Attribution File] [outputFile.json]'
+        print 'Missing script argument: ./attributions2json [./Attribution File] [output_file.json]'
         sys.exit(1)
-    inputFile = sys.argv[1]
-    validateFile(inputFile, 'input')
-    outputFile = sys.argv[2]
-    validateFile(outputFile, 'output')
 
-    urls = getGitRepos(inputFile)
+    input_file = sys.argv[1]
+    validate_file(input_file, 'input')
+    output_file = sys.argv[2]
+    validate_file(output_file, 'output')
+
+    if not os.environ.has_key('GITHUB_ACCESS_TOKEN'):
+        print "Warning: No GITHUB_ACCESS_TOKEN environment variable configured. Expect to run into API rate limits."
+
+    urls = get_repos(input_file)
     attributions = []
     for url in urls:
-        name = getNameFrom(url)
-        text = getLicenseTextFrom(url)
+        name = get_name(url)
+        text = get_license_text(url)
         if text:
             attributions.append(Attribution(name, text))
         else:
             print '{}: license file not found'.format(name)
-    exportJSON(outputFile, *attributions)
+    export_json(output_file, *attributions)

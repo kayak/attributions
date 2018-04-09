@@ -2,7 +2,7 @@
 
 Attributions is a framework used to acknowledge Third-Party Libraries and build tools used to develop and maintain your iOS application. Here's an example:
 
-| <img src="https://github.com/kayak/attributions/blob/master/Screenshots/AttributionsListView.png" style="width: 50%; height: 50%"> | <img src="https://github.com/kayak/attributions/blob/master/Screenshots/AttributionsLicenseView.png" style="width: 50%; height: 50%">  |
+| <img src="https://github.com/kayak/attributions/blob/master/Screenshots/AttributionsListView.png" style="width: 50%; height: 50%"> | <img src="https://github.com/kayak/attributions/blob/master/Screenshots/AttributionsLicenseView.png" style="width: 50%; height: 50%"> |
 :---:|:---:
 
 
@@ -10,70 +10,24 @@ Attributions is a framework used to acknowledge Third-Party Libraries and build 
 
 Attributions includes two scripts: one that compiles Attributions from Carthage dependencies, and the other which compiles Attributions from GitHub Repositories (for user specified Third-Party Libraries not managed by Carthage). Remaining Attributions can be built from commonly used licenses, bundled within the framework, or specified manually by the user.
 
-* To compile Attributions for dependencies managed by Carthage:
-	* Run `carthage checkout --no-use-binaries` to download framework sources into your project's `Carthage/Checkouts` directory
-	* Run `python cartfile2json.py [directory containing Carthage files] 	[output.json]`
+### From Cartfile
 
-* To compile Attributions for Third-Party Libraries with GitHub Repositories:
-	* Create an input file containing a list of GitHub Repositories
-	    ``` text
-        https://github.com/jenkinsci/jenkins
-        https://github.com/fastlane/fastlane
-        https://github.com/realm/SwiftLint
-        ```
-    * Then, run `python attributions2json.py [./input file] [output.json]`
+To compile Attributions for dependencies managed by Carthage:
 
-## Example Attribution JSON Files
+* Run `carthage checkout --no-use-binaries` to download framework sources into your project's `Carthage/Checkouts` directory
+* Run `python cartfile2json.py [directory containing Carthage files] [output.json]`
 
-* Output file from scripts:
-
-     ```
-      [
-        ...
-        {
-            "name": "[Attribution from Carthage/GitHub]",
-            "license": {
-                "text": "This is a license... "
-            }
-        },
-        ...
-      ]
-     ```
-
-* Example for specifying all other Attributions:
-
-    ```json
-    [
-      {
-          "name": "[Attribution from bundled license in Attributions]",
-          "license": {
-              "id": "unlicense"
-          }
-      },
-      {
-           "name": "[Attribution from license in main bundle]",
-           "license": {
-               "filename": "unlicenseMain.txt"
-           }
-       },
-       {
-           "name": "[Attribution from license in another framework]",
-           "license": {
-               "bundleID" : "com.kayak.Framework",
-               "filename": "unlicenseFW.txt"
-           }
-       }
-     ]
-     ```
-
-## Customize Carthage Attributions
+#### Customization
 
 It's possible to further customize displayed Carthage attributions by modifying `Cartfile` with Attributions macros, which are comments with a simple syntax:
+
 ``` text
 # Attributions[macro_key]=macro_value
 github "kayak/attributions"
 ```
+
 Attributions macros apply to the next Carthage framework declaration. You can define multiple macros for a framework by separating each macro into separate line:
+
 ``` text
 # Attributions[key1]=value1
 # Attributions[key2]=value2
@@ -100,6 +54,62 @@ github "kayak/attributions"
 
 This macro is optional and not providing it, displays the framework attribution in all your apps.
 
+### Custom GitHub Attributions
+
+To compile Attributions for Third-Party Libraries with GitHub Repositories:
+
+* Create an input file containing a list of GitHub Repositories
+    ``` text
+    https://github.com/jenkinsci/jenkins
+    https://github.com/fastlane/fastlane
+    https://github.com/realm/SwiftLint
+    ```
+* Then, run `python attributions2json.py [./input file] [output.json]`
+
+`attributions2json.py` uses GitHub's JSON API. You can work around rate limits by generating an access token and exporting it under `GITHUB_ACCESS_TOKEN` in your shell session.
+
+## Example Attribution JSON Files
+
+* Output file from scripts:
+
+``` json
+[
+    {
+        "name": "[Attribution from Carthage/GitHub]",
+        "license": {
+            "text": "This is a license... "
+        }
+    },
+    ...
+]
+```
+
+* Example for manually specifying other attributions:
+
+``` json
+[
+    {
+        "name": "[Attribution from bundled license in Attributions]",
+        "license": {
+            "id": "unlicense"
+        }
+    },
+    {
+        "name": "[Attribution from license in main bundle]",
+        "license": {
+            "filename": "unlicenseMain.txt"
+        }
+    },
+    {
+        "name": "[Attribution from license in another framework]",
+        "license": {
+            "bundleID" : "com.kayak.Framework",
+            "filename": "unlicenseFW.txt"
+        }
+    }
+]
+```
+
 ## Usage
 
 * `AttributionViewController` - is a subclassed UITableViewController that lists all the Attributions in a grouped UITableView. It has two public members:
@@ -118,27 +128,27 @@ To incorporate Attributions into your project, add the compiled Attribution JSON
 
 * Attributions Implementation Example:
 
-```swift
-    let attributionController = AttributionController()
-    guard let carthageFile = Bundle.main.url(forResource: "carthageAttributions", withExtension: "json") else {
-        assertionFailure("File not found")
-        return false
-    }
-    guard let customAttributionsFile = Bundle.main.url(forResource: "customAttributions", withExtension: "json") else {
-        assertionFailure("File not found")
-        return false
-    }
-    let sections = [
-        AttributionSection(file: carthageFile, description: "Carthage"),
-        AttributionSection(file: customAttributionsFile, description: "Other")
-    ]
-    do {
-        try attributionController.setAttributions(from: sections)
-    } catch {
-        assertionFailure(error.localizedDescription)
-        return false
-    }
+``` swift
+let attributionController = AttributionController()
+guard let carthageFile = Bundle.main.url(forResource: "carthageAttributions", withExtension: "json") else {
+    assertionFailure("File not found")
+    return false
+}
+guard let customAttributionsFile = Bundle.main.url(forResource: "customAttributions", withExtension: "json") else {
+    assertionFailure("File not found")
+    return false
+}
+let sections = [
+    AttributionSection(file: carthageFile, description: "Carthage"),
+    AttributionSection(file: customAttributionsFile, description: "Other")
+]
+do {
+    try attributionController.setAttributions(from: sections)
+} catch {
+    assertionFailure(error.localizedDescription)
+    return false
+}
 
-    let navController = UINavigationController()
-    navController.viewControllers = [attributionController as UIViewController]
+let navController = UINavigationController()
+navController.viewControllers = [attributionController as UIViewController]
 ```
