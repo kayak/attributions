@@ -52,7 +52,7 @@ def parseCartfileFrameworks(cartfile):
                         macro_buffer.update({keyValueSearch.group(1): keyValueSearch.group(2)})
                     else:
                         print "Failed to parse Attributions macro '{}'".format(line)
-                elif line.startswith('#'):
+                elif line.startswith('#') or line.startswith('binary'):
                     continue
                 else:
                     components = line.split()
