@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11D723B3218354D9004C4FF0 /* epl-1.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 11D723AA218354D9004C4FF0 /* epl-1.0.txt */; };
+		11D723B6218354D9004C4FF0 /* agpl-3.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 11D723AD218354D9004C4FF0 /* agpl-3.0.txt */; };
+		11D723B7218354D9004C4FF0 /* apache-2.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 11D723AE218354D9004C4FF0 /* apache-2.0.txt */; };
+		11D723BA218354D9004C4FF0 /* unlicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 11D723B1218354D9004C4FF0 /* unlicense.txt */; };
 		25209AED1F3DA0C20072C838 /* Framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25209AEC1F3DA0C20072C838 /* Framework.framework */; };
 		25209AEE1F3DA0C20072C838 /* Framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 25209AEC1F3DA0C20072C838 /* Framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2594A4E71F445F7500D8C5F7 /* AttributionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2594A4E61F445F7500D8C5F7 /* AttributionController.swift */; };
@@ -36,6 +40,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		11D723AA218354D9004C4FF0 /* epl-1.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "epl-1.0.txt"; sourceTree = "<group>"; };
+		11D723AD218354D9004C4FF0 /* agpl-3.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "agpl-3.0.txt"; sourceTree = "<group>"; };
+		11D723AE218354D9004C4FF0 /* apache-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "apache-2.0.txt"; sourceTree = "<group>"; };
+		11D723B1218354D9004C4FF0 /* unlicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unlicense.txt; sourceTree = "<group>"; };
 		25209AEC1F3DA0C20072C838 /* Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2594A4E61F445F7500D8C5F7 /* AttributionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributionController.swift; sourceTree = "<group>"; };
 		259C8ED81F39A09900DFDA05 /* Source.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Source.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,9 +70,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11D723A821835490004C4FF0 /* Licenses */ = {
+			isa = PBXGroup;
+			children = (
+				11D723AD218354D9004C4FF0 /* agpl-3.0.txt */,
+				11D723AE218354D9004C4FF0 /* apache-2.0.txt */,
+				11D723AA218354D9004C4FF0 /* epl-1.0.txt */,
+				11D723B1218354D9004C4FF0 /* unlicense.txt */,
+			);
+			path = Licenses;
+			sourceTree = "<group>";
+		};
 		259C8ECF1F39A09900DFDA05 = {
 			isa = PBXGroup;
 			children = (
+				11D723A821835490004C4FF0 /* Licenses */,
 				25209AEC1F3DA0C20072C838 /* Framework.framework */,
 				25ABE3621F3CAB5600C1E497 /* Attributions.framework */,
 				259C8EDA1F39A09900DFDA05 /* Source */,
@@ -155,11 +175,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11D723B6218354D9004C4FF0 /* agpl-3.0.txt in Resources */,
 				259C8F0C1F39A0F100DFDA05 /* carthageAttributions.json in Resources */,
+				11D723B3218354D9004C4FF0 /* epl-1.0.txt in Resources */,
 				259C8F0E1F39A0F500DFDA05 /* unlicenseMain.txt in Resources */,
 				259C8EE61F39A09900DFDA05 /* LaunchScreen.storyboard in Resources */,
 				259C8EE31F39A09900DFDA05 /* Assets.xcassets in Resources */,
+				11D723BA218354D9004C4FF0 /* unlicense.txt in Resources */,
 				259C8F0A1F39A0EB00DFDA05 /* customAttributions.json in Resources */,
+				11D723B7218354D9004C4FF0 /* apache-2.0.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

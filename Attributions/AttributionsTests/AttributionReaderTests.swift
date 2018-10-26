@@ -3,6 +3,13 @@ import XCTest
 
 class AttributionReaderTests: XCTestCase {
 
+    private lazy var licenseFiles: [String] = {
+        var licenseFiles = [String]()
+        if let path = self.testsBundle.path(forResource: "epl-1.0", ofType: "txt") {
+            licenseFiles.append(path)
+        }
+        return licenseFiles
+    }()
     private lazy var testsBundle = Bundle(for: type(of: self))
     private var sections: [AttributionSection] = []
 
@@ -45,8 +52,9 @@ class AttributionReaderTests: XCTestCase {
             let attributions = try compileAttributions()
             for attribution in attributions {
                 if attribution.name == framework {
+                    let licenseReader = LicenseReader(attribution: attribution, licenseFiles: licenseFiles)
                     XCTAssert(attribution.displayedForMainBundleIDs.elementsEqual(bundleIDs))
-                    XCTAssertNoThrow(try attribution.license.getText())
+                    XCTAssertNoThrow(try licenseReader.text())
                     return
                 }
             }
@@ -61,7 +69,7 @@ class AttributionReaderTests: XCTestCase {
     }
 
     private func compileAttributions() throws -> [Attribution] {
-        let attributions = try AttributionReader().compileAttributions(sections: sections, mainBundle: testsBundle)
+        let attributions = try AttributionReader().compileAttributions(sections: sections, mainBundle: testsBundle, licenseFiles: licenseFiles)
         return attributions.flatMap { $0 }
     }
 

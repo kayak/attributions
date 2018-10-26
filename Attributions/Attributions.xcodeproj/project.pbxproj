@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11D723A721835045004C4FF0 /* LicenseReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D723A621835045004C4FF0 /* LicenseReader.swift */; };
+		11D723BC21835A9C004C4FF0 /* epl-1.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 11D723BB21835A9C004C4FF0 /* epl-1.0.txt */; };
 		25209B771F41EFFC0072C838 /* AttributionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25209B751F41EFFC0072C838 /* AttributionSection.swift */; };
 		25209B781F41EFFC0072C838 /* AttributionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25209B761F41EFFC0072C838 /* AttributionStyle.swift */; };
 		25456C4D1F31B23100414917 /* NSErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25456C4C1F31B23100414917 /* NSErrorExtension.swift */; };
@@ -23,16 +25,6 @@
 		25ABE35E1F3CA97800C1E497 /* badFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE35A1F3CA97800C1E497 /* badFile.json */; };
 		25ABE35F1F3CA97800C1E497 /* goodJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE35B1F3CA97800C1E497 /* goodJSON.json */; };
 		25ABE3611F3CA97800C1E497 /* myLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE35D1F3CA97800C1E497 /* myLicense.txt */; };
-		25ABE3741F3D9A4300C1E497 /* agpl-3.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE36B1F3D9A4300C1E497 /* agpl-3.0.txt */; };
-		25ABE3751F3D9A4300C1E497 /* apache-2.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE36C1F3D9A4300C1E497 /* apache-2.0.txt */; };
-		25ABE3761F3D9A4300C1E497 /* epl-1.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE36D1F3D9A4300C1E497 /* epl-1.0.txt */; };
-		25ABE3771F3D9A4300C1E497 /* gpl-2.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE36E1F3D9A4300C1E497 /* gpl-2.0.txt */; };
-		25ABE3781F3D9A4300C1E497 /* gpl-3.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE36F1F3D9A4300C1E497 /* gpl-3.0.txt */; };
-		25ABE3791F3D9A4300C1E497 /* lgpl-2.1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE3701F3D9A4300C1E497 /* lgpl-2.1.txt */; };
-		25ABE37A1F3D9A4300C1E497 /* lgpl-3.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE3711F3D9A4300C1E497 /* lgpl-3.0.txt */; };
-		25ABE37B1F3D9A4300C1E497 /* mpl-2.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE3721F3D9A4300C1E497 /* mpl-2.0.txt */; };
-		25ABE37C1F3D9A4300C1E497 /* unlicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 25ABE3731F3D9A4300C1E497 /* unlicense.txt */; };
-		4E3A503B1F8648420049249F /* LicenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A503A1F8648420049249F /* LicenseTests.swift */; };
 		4E3A503D1F8648FA0049249F /* AttributionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A503C1F8648FA0049249F /* AttributionTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11D723A621835045004C4FF0 /* LicenseReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseReader.swift; sourceTree = "<group>"; };
+		11D723BB21835A9C004C4FF0 /* epl-1.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "epl-1.0.txt"; sourceTree = "<group>"; };
 		25209B751F41EFFC0072C838 /* AttributionSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributionSection.swift; sourceTree = "<group>"; };
 		25209B761F41EFFC0072C838 /* AttributionStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributionStyle.swift; sourceTree = "<group>"; };
 		25456C4C1F31B23100414917 /* NSErrorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSErrorExtension.swift; sourceTree = "<group>"; };
@@ -66,16 +60,6 @@
 		25ABE35B1F3CA97800C1E497 /* goodJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = goodJSON.json; sourceTree = "<group>"; };
 		25ABE35D1F3CA97800C1E497 /* myLicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = myLicense.txt; sourceTree = "<group>"; };
 		25ABE3651F3CB56100C1E497 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		25ABE36B1F3D9A4300C1E497 /* agpl-3.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "agpl-3.0.txt"; sourceTree = "<group>"; };
-		25ABE36C1F3D9A4300C1E497 /* apache-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "apache-2.0.txt"; sourceTree = "<group>"; };
-		25ABE36D1F3D9A4300C1E497 /* epl-1.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "epl-1.0.txt"; sourceTree = "<group>"; };
-		25ABE36E1F3D9A4300C1E497 /* gpl-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "gpl-2.0.txt"; sourceTree = "<group>"; };
-		25ABE36F1F3D9A4300C1E497 /* gpl-3.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "gpl-3.0.txt"; sourceTree = "<group>"; };
-		25ABE3701F3D9A4300C1E497 /* lgpl-2.1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "lgpl-2.1.txt"; sourceTree = "<group>"; };
-		25ABE3711F3D9A4300C1E497 /* lgpl-3.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "lgpl-3.0.txt"; sourceTree = "<group>"; };
-		25ABE3721F3D9A4300C1E497 /* mpl-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mpl-2.0.txt"; sourceTree = "<group>"; };
-		25ABE3731F3D9A4300C1E497 /* unlicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unlicense.txt; sourceTree = "<group>"; };
-		4E3A503A1F8648420049249F /* LicenseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseTests.swift; sourceTree = "<group>"; };
 		4E3A503C1F8648FA0049249F /* AttributionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				4EFC43171F82C56300D5168B /* Sources */,
-				25ABE36A1F3D98A100C1E497 /* Licenses */,
 				25A57CEF1F2B2B3D00CB85C1 /* Info.plist */,
 			);
 			path = Attributions;
@@ -133,28 +116,12 @@
 				4E3A503C1F8648FA0049249F /* AttributionTests.swift */,
 				25ABE35A1F3CA97800C1E497 /* badFile.json */,
 				25ABE3571F3CA81700C1E497 /* badKey.json */,
+				11D723BB21835A9C004C4FF0 /* epl-1.0.txt */,
 				25ABE35B1F3CA97800C1E497 /* goodJSON.json */,
 				25ABE3651F3CB56100C1E497 /* Info.plist */,
-				4E3A503A1F8648420049249F /* LicenseTests.swift */,
 				25ABE35D1F3CA97800C1E497 /* myLicense.txt */,
 			);
 			path = AttributionsTests;
-			sourceTree = "<group>";
-		};
-		25ABE36A1F3D98A100C1E497 /* Licenses */ = {
-			isa = PBXGroup;
-			children = (
-				25ABE36B1F3D9A4300C1E497 /* agpl-3.0.txt */,
-				25ABE36C1F3D9A4300C1E497 /* apache-2.0.txt */,
-				25ABE36D1F3D9A4300C1E497 /* epl-1.0.txt */,
-				25ABE36E1F3D9A4300C1E497 /* gpl-2.0.txt */,
-				25ABE36F1F3D9A4300C1E497 /* gpl-3.0.txt */,
-				25ABE3701F3D9A4300C1E497 /* lgpl-2.1.txt */,
-				25ABE3711F3D9A4300C1E497 /* lgpl-3.0.txt */,
-				25ABE3721F3D9A4300C1E497 /* mpl-2.0.txt */,
-				25ABE3731F3D9A4300C1E497 /* unlicense.txt */,
-			);
-			path = Licenses;
 			sourceTree = "<group>";
 		};
 		4EFC43171F82C56300D5168B /* Sources */ = {
@@ -168,6 +135,7 @@
 				25A57D071F2B2B5C00CB85C1 /* AttributionViewController.swift */,
 				25A7EA6A1F3B2C6000643E7A /* BundleExtension.swift */,
 				259C8F161F39A59C00DFDA05 /* License.swift */,
+				11D723A621835045004C4FF0 /* LicenseReader.swift */,
 				25A57D091F2B2B5C00CB85C1 /* LicenseViewController.swift */,
 				25456C4C1F31B23100414917 /* NSErrorExtension.swift */,
 			);
@@ -269,15 +237,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25ABE3781F3D9A4300C1E497 /* gpl-3.0.txt in Resources */,
-				25ABE37C1F3D9A4300C1E497 /* unlicense.txt in Resources */,
-				25ABE3741F3D9A4300C1E497 /* agpl-3.0.txt in Resources */,
-				25ABE3751F3D9A4300C1E497 /* apache-2.0.txt in Resources */,
-				25ABE3761F3D9A4300C1E497 /* epl-1.0.txt in Resources */,
-				25ABE3791F3D9A4300C1E497 /* lgpl-2.1.txt in Resources */,
-				25ABE37B1F3D9A4300C1E497 /* mpl-2.0.txt in Resources */,
-				25ABE3771F3D9A4300C1E497 /* gpl-2.0.txt in Resources */,
-				25ABE37A1F3D9A4300C1E497 /* lgpl-3.0.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +247,7 @@
 				25ABE3591F3CA81700C1E497 /* badKey.json in Resources */,
 				25ABE3611F3CA97800C1E497 /* myLicense.txt in Resources */,
 				25ABE35E1F3CA97800C1E497 /* badFile.json in Resources */,
+				11D723BC21835A9C004C4FF0 /* epl-1.0.txt in Resources */,
 				25ABE35F1F3CA97800C1E497 /* goodJSON.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +267,7 @@
 				25456C4D1F31B23100414917 /* NSErrorExtension.swift in Sources */,
 				25209B771F41EFFC0072C838 /* AttributionSection.swift in Sources */,
 				25A57D0A1F2B2B5C00CB85C1 /* Attribution.swift in Sources */,
+				11D723A721835045004C4FF0 /* LicenseReader.swift in Sources */,
 				25A7EA6B1F3B2C6000643E7A /* BundleExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,7 +277,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				25ABE3581F3CA81700C1E497 /* AttributionReaderTests.swift in Sources */,
-				4E3A503B1F8648420049249F /* LicenseTests.swift in Sources */,
 				4E3A503D1F8648FA0049249F /* AttributionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ]
 
         do {
-            try attributionController.setAttributions(from: sections)
+            try attributionController.setAttributions(from: sections, licenseFiles: fetchLicenseFiles())
         } catch {
             assertionFailure(error.localizedDescription)
             return false
@@ -39,4 +39,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    private func fetchLicenseFiles() -> [String] {
+        var licenseFiles = [String]()
+        let ids = ["agpl-3.0", "apache-2.0", "epl-1.0", "unlicense"]
+        for id in ids {
+            if let path = Bundle.main.path(forResource: id, ofType: "txt") {
+                licenseFiles.append(path)
+            }
+        }
+        return licenseFiles
+    }
+    
 }

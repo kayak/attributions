@@ -5,10 +5,12 @@ open class AttributionViewController: UITableViewController {
     public var attributionStyle = AttributionStyle()
     private var attributions = [[Attribution]]()
     private var attributionSections = [AttributionSection]()
+    private var licenseFiles: [String] = []
 
-    public func setAttributions(from sections: [AttributionSection], mainBundle: Bundle = Bundle.main) throws {
+    public func setAttributions(from sections: [AttributionSection], mainBundle: Bundle = Bundle.main, licenseFiles: [String] = []) throws {
         attributionSections = sections
-        attributions = try AttributionReader().compileAttributions(sections: attributionSections, mainBundle: mainBundle)
+        attributions = try AttributionReader().compileAttributions(sections: attributionSections, mainBundle: mainBundle, licenseFiles: licenseFiles)
+        self.licenseFiles = licenseFiles
     }
 
     override open func viewDidLoad() {
@@ -39,7 +41,10 @@ open class AttributionViewController: UITableViewController {
 
     open override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let licenseController = LicenseViewController()
-        licenseController.attribution = attributions[indexPath.section][indexPath.row]
+        let licenseReader = LicenseReader(
+            attribution: attributions[indexPath.section][indexPath.row],
+            licenseFiles: licenseFiles)
+        licenseController.licenseReader = licenseReader
         licenseController.attributionStyle = attributionStyle
         navigationController?.pushViewController(licenseController, animated: true)
     }

@@ -8,7 +8,7 @@ Attributions is a framework used to acknowledge Third-Party Libraries and build 
 
 ## Compile Attributions
 
-Attributions includes two scripts: one that compiles Attributions from Carthage dependencies, and the other which compiles Attributions from GitHub Repositories (for user specified Third-Party Libraries not managed by Carthage). Remaining Attributions can be built from commonly used licenses, bundled within the framework, or specified manually by the user.
+Attributions includes two scripts: one that compiles Attributions from Carthage dependencies, and the other which compiles Attributions from GitHub Repositories (for user specified Third-Party Libraries not managed by Carthage). Remaining Attributions can be specified manually by the user.
 
 ### From Cartfile
 
@@ -89,7 +89,7 @@ To compile Attributions for Third-Party Libraries with GitHub Repositories:
 ``` json
 [
     {
-        "name": "[Attribution from bundled license in Attributions]",
+        "name": "[Attribution from user specified license files]",
         "license": {
             "id": "unlicense"
         }
@@ -109,6 +109,8 @@ To compile Attributions for Third-Party Libraries with GitHub Repositories:
     }
 ]
 ```
+
+**NOTE**: Attributions no longer includes common license files. If you want to continue specifying licenses with the `id` property, you will have to supply the license files yourself. The `setAttributions()` function on `AttributionViewController` now includes a new parameters for passing in an array of these licenses. Each should be the full path to the license file.
 
 ## Usage
 

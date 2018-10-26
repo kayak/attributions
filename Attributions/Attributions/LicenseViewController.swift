@@ -3,14 +3,14 @@ import UIKit
 final class LicenseViewController: UIViewController  {
 
     private let textView = UITextView()
-    var attribution: Attribution?
     var attributionStyle = AttributionStyle()
+    var licenseReader: LicenseReader?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.isEditable = false
         textView.isScrollEnabled = false
-        textView.text = try! attribution?.license.getText()
+        textView.text = try? licenseReader?.text() ?? ""
         textView.font = .systemFont(ofSize: 15)
         textView.textColor = attributionStyle.textColor
         textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
@@ -27,7 +27,7 @@ final class LicenseViewController: UIViewController  {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = attribution?.name
+        title = licenseReader?.attribution.name
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
