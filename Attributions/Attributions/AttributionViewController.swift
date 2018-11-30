@@ -15,6 +15,7 @@ open class AttributionViewController: UITableViewController {
 
     override open func viewDidLoad() {
         super.viewDidLoad()
+        tableView.cellLayoutMarginsFollowReadableWidth = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "attributionCell")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
@@ -41,9 +42,7 @@ open class AttributionViewController: UITableViewController {
 
     open override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let licenseController = LicenseViewController()
-        let licenseReader = LicenseReader(
-            attribution: attributions[indexPath.section][indexPath.row],
-            licenseFiles: licenseFiles)
+        let licenseReader = LicenseReader(attribution: attributions[indexPath.section][indexPath.row], licenseFiles: licenseFiles)
         licenseController.licenseReader = licenseReader
         licenseController.attributionStyle = attributionStyle
         navigationController?.pushViewController(licenseController, animated: true)
