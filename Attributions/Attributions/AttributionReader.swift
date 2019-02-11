@@ -23,9 +23,9 @@ class AttributionReader {
         }
         
         return attributionJSONs
-            .flatMap { Attribution(json: $0) }
+            .compactMap { Attribution(json: $0) }
             .filter { $0.isDisplayed(in: mainBundle) }
-            .sorted(by: { $0.0.name.lowercased() < $0.1.name.lowercased() })
+            .sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
     }
 
 }
