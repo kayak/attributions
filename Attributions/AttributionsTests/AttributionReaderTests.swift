@@ -18,11 +18,13 @@ class AttributionReaderTests: XCTestCase {
             XCTFail()
             return
         }
-        sections.append(AttributionSection(file: path, description: "GoodJSON"))
+        let additionalAttribution = Attribution(name: "Additional Framework", displayedForMainBundleIDs: [], license: .text("It's free!!!"))
+        sections.append(AttributionSection(file: path, description: "GoodJSON", additionalAttributions: [additionalAttribution]))
 
         verifyReadingSections(framework: "Apache", hasBundleIDs: [])
         verifyReadingSections(framework: "Eclipse", hasBundleIDs: [])
         verifyReadingSections(framework: "Another Framework", hasBundleIDs: ["com.kayak.AttributionsTests"])
+        verifyReadingSections(framework: "Additional Framework", hasBundleIDs: [])
     }
 
     func testThrowsErrorForBadLicenseKey() {

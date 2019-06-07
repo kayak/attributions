@@ -4,10 +4,12 @@ public struct AttributionSection {
 
     public let file: URL
     public let description: String
+    public let additionalAttributions: [Attribution]?
 
-    public init(file: URL, description: String) {
+    public init(file: URL, description: String, additionalAttributions: [Attribution]? = nil) {
         self.file = file
         self.description = description
+        self.additionalAttributions = additionalAttributions
     }
 
 }
