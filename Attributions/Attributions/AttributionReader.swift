@@ -5,11 +5,12 @@ class AttributionReader {
     func compileAttributions(sections: [AttributionSection], mainBundle: Bundle, licenseFiles: [String]) throws -> [[Attribution]] {
         var attributionsPerSection = [[Attribution]]()
         for section in sections {
-            let attributions = try jsonToAttribution(file: section.file, mainBundle: mainBundle)
+            var attributions = try jsonToAttribution(file: section.file, mainBundle: mainBundle)
             try attributions.forEach {
                 let licenseReader = LicenseReader(attribution: $0, licenseFiles: licenseFiles)
                 try licenseReader.verifyLicenseExists()
             }
+            attributions.append(contentsOf: section.additionalAttributions)
             attributionsPerSection.append(attributions)
         }
         return attributionsPerSection

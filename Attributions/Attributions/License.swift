@@ -1,6 +1,6 @@
 import Foundation
 
-enum License {
+public enum License {
 
     case id(String)
     case text(String)

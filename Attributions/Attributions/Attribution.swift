@@ -1,10 +1,10 @@
 import Foundation
 
-class Attribution {
+public class Attribution {
 
-    let name: String
-    let displayedForMainBundleIDs: [String]
-    let license: License
+    public let name: String
+    public let displayedForMainBundleIDs: [String]
+    public let license: License
 
     convenience init?(json: [AnyHashable: Any]) {
         guard
@@ -19,7 +19,7 @@ class Attribution {
         self.init(name: name, displayedForMainBundleIDs: displayedForMainBundleIDs, license: license)
     }
 
-    init(name: String, displayedForMainBundleIDs: [String], license: License) {
+    public init(name: String, displayedForMainBundleIDs: [String], license: License) {
         self.name = name
         self.displayedForMainBundleIDs = displayedForMainBundleIDs
         self.license = license
