@@ -10,9 +10,7 @@ class AttributionReader {
                 let licenseReader = LicenseReader(attribution: $0, licenseFiles: licenseFiles)
                 try licenseReader.verifyLicenseExists()
             }
-            if let additionalAttributions = section.additionalAttributions {
-                attributions.append(contentsOf: additionalAttributions)
-            }
+            attributions.append(contentsOf: section.additionalAttributions)
             attributionsPerSection.append(attributions)
         }
         return attributionsPerSection
