@@ -40,8 +40,10 @@ def get_owner_name(repo):
 
 
 def get_content_headers():
+    headers = {}
     if os.environ.has_key('GITHUB_ACCESS_TOKEN'):
-        return { 'Authorization': 'token %s' % os.environ['GITHUB_ACCESS_TOKEN'] }
+        headers['Authorization'] = 'token %s' % os.environ['GITHUB_ACCESS_TOKEN']
+    return headers
 
 
 def send_content_request(repo, path):
