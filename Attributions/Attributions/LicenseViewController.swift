@@ -8,7 +8,7 @@ final class LicenseViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = attributionStyle.backgroundColor
 
         let scrollView = UIScrollView(frame: .zero)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -33,6 +33,7 @@ final class LicenseViewController: UIViewController  {
         ])
 
         let textView = UITextView(frame: .zero)
+        textView.backgroundColor = .clear
         textView.isEditable = false
         textView.isSelectable = false
         textView.isScrollEnabled = false

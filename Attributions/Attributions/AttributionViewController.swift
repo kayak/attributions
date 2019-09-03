@@ -15,6 +15,7 @@ open class AttributionViewController: UITableViewController {
 
     override open func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundColor = attributionStyle.backgroundColor
         tableView.cellLayoutMarginsFollowReadableWidth = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "attributionCell")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -34,6 +35,7 @@ open class AttributionViewController: UITableViewController {
 
     open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "attributionCell", for: indexPath)
+        cell.backgroundColor = attributionStyle.cellBackgroundColor
         cell.textLabel?.text = attributions[indexPath.section][indexPath.row].name
         cell.textLabel?.textColor = attributionStyle.textColor
         cell.accessoryType = .disclosureIndicator
