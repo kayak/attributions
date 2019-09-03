@@ -39,6 +39,12 @@ open class AttributionViewController: UITableViewController {
         cell.textLabel?.text = attributions[indexPath.section][indexPath.row].name
         cell.textLabel?.textColor = attributionStyle.textColor
         cell.accessoryType = .disclosureIndicator
+        if let backgroundColor = attributionStyle.cellSelectionColor {
+            cell.selectedBackgroundView = UIView()
+            cell.selectedBackgroundView?.backgroundColor = backgroundColor
+        } else {
+            cell.selectedBackgroundView = nil
+        }
         return cell
     }
 

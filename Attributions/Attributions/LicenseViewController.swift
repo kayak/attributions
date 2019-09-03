@@ -8,7 +8,7 @@ final class LicenseViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = attributionStyle.backgroundColor
+        view.backgroundColor = attributionStyle.licenseBackgroundColor
 
         let scrollView = UIScrollView(frame: .zero)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
