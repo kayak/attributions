@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 import json
 import os
@@ -33,7 +33,7 @@ def exportJSON(output, *attributions):
             file.write(jsonResult)
             file.close()
     except IOError as e:
-        print 'I/O Error: ({0}) : {1}'.format(e.errno, e.strerror)
+        print('I/O Error: ({0}) : {1}'.format(e.errno, e.strerror))
 
 
 def parseCartfileFrameworks(cartfile):
@@ -51,7 +51,7 @@ def parseCartfileFrameworks(cartfile):
                     if keyValueSearch:
                         macro_buffer.update({keyValueSearch.group(1): keyValueSearch.group(2)})
                     else:
-                        print "Failed to parse Attributions macro '{}'".format(line)
+                        print("Failed to parse Attributions macro '{}'".format(line))
                 elif line.startswith('#') or line.startswith('binary'):
                     continue
                 else:
@@ -65,20 +65,20 @@ def parseCartfileFrameworks(cartfile):
                     framework = CartfileFramework(line, frameworkName, displayName, displayedForMainBundleIDs)
                     frameworks.append(framework)
     except IOError as e:
-        print 'Could not open {}'.format(cartfile)
+        print('Could not open {}'.format(cartfile))
         sys.exit(1)
     return frameworks
 
 
 def validateDirectory(directory, messageFormat):
     if not os.path.isdir(directory):
-        print messageFormat.format(directory)
+        print(messageFormat.format(directory))
         sys.exit(1)
 
 
 def validateFile(file):
     if not os.path.isfile(file):
-        print 'File not found: {}'.format(file)
+        print('File not found: {}'.format(file))
         sys.exit(1)
 
 
@@ -102,14 +102,14 @@ def buildCarthageAttributions(directory):
         try:
             licenseText = open(os.path.join(frameworkDirectory, filename)).read()
         except IOError as e:
-            print 'I/O Error: ({0}) : {1}'.format(filename, e.strerror)
+            print('I/O Error: ({0}) : {1}'.format(filename, e.strerror))
         attributions.append(Attribution(framework.displayName, framework.bundle, licenseText))
     return attributions
 
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
-        print 'Missing script argument: ./cartfile2json [Carthage directory path] [outputFile.json]'
+        print('Missing script argument: ./cartfile2json [Carthage directory path] [outputFile.json]')
         sys.exit(1)
     directory = sys.argv[1]
     outputFile = sys.argv[2]
@@ -117,5 +117,5 @@ if __name__ == '__main__':
         d = buildCarthageAttributions(directory)
         exportJSON(outputFile, *d)
     else:
-        print 'Output file must be .json'
+        print('Output file must be .json')
         sys.exit(1)
