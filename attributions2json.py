@@ -1,5 +1,6 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
+import base64
 import json
 import os
 import shlex
@@ -65,7 +66,8 @@ def get_license_text(repo):
     path = find_license_path(repo)
     if path:
         data = send_content_request(repo, path)
-        return data['content'].decode(data['encoding'])
+        decodedData = base64.b64decode(data['content'])
+        return decodedData.decode('utf-8')
 
 
 def validate_file(file, type):
