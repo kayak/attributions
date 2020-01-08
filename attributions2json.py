@@ -66,6 +66,9 @@ def get_license_text(repo):
     path = find_license_path(repo)
     if path:
         data = send_content_request(repo, path)
+        if data['encoding'] != 'base64':
+            print("Encoding of Github response was not base64")
+            sys.exit(1)
         decodedData = base64.b64decode(data['content'])
         return decodedData.decode('utf-8')
 
