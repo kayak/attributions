@@ -74,7 +74,7 @@ def get_license_text(repo):
 
 
 def validate_file(file, type):
-    if type is 'input':
+    if type == 'input':
         if not os.path.isfile(file):
             print('File not found: {}'.format(file))
             sys.exit(1)
