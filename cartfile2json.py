@@ -47,7 +47,7 @@ def parseCartfileFrameworks(cartfile):
                 if not line:
                     continue
                 if line.startswith('# Attributions['):
-                    keyValueSearch = re.search('^# Attributions\[([a-zA-Z0-9_]+)\]=(.*)$', line)
+                    keyValueSearch = re.search('^# Attributions\\[([a-zA-Z0-9_]+)\\]=(.*)$', line)
                     if keyValueSearch:
                         macro_buffer.update({keyValueSearch.group(1): keyValueSearch.group(2)})
                     else:
